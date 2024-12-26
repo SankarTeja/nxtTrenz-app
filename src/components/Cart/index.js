@@ -12,11 +12,6 @@ const Cart = () => (
     {value => {
       const {cartList, removeAllCartItems} = value
       const showEmptyView = cartList.length === 0
-      // TODO: Update the functionality to remove all the items in the cart
-
-      const onClickRemoveAll = () => {
-        removeAllCartItems()
-      }
 
       return (
         <>
@@ -26,18 +21,15 @@ const Cart = () => (
               <EmptyCartView />
             ) : (
               <div className="cart-content-container">
-                <h1 className="cart-heading">My Cart</h1>
-                <div className="remove-all-container">
-                  <div>
-                    <button
-                      className="remove-all-btn"
-                      type="button"
-                      data-testid="remove"
-                      onClick={onClickRemoveAll}
-                    >
-                      Remove All
-                    </button>
-                  </div>
+                <div className="cart-header">
+                  <h1 className="cart-heading">My Cart</h1>
+                  <button
+                    type="button"
+                    className="remove-all-btn"
+                    onClick={removeAllCartItems}
+                  >
+                    Remove All
+                  </button>
                 </div>
                 <CartListView />
                 <CartSummary />
